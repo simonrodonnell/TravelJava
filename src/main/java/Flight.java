@@ -20,8 +20,17 @@ public class Flight {
         return this.passengers.size();
     }
 
+    public int totalPassengerWeight() {
+        int total = 0;
+        for(Passenger passenger : this.passengers){
+            total += passenger.passengerWeight();
+        }
+        return total;
+    }
+
     public boolean seatsAvailable() {
-        if (this.passengerCount() < plane.getPlaneType().getCapacity()){
+        int availableWeight = plane.getPlaneType().getWeightAllowance() / 2;
+        if (this.passengerCount() < plane.getPlaneType().getCapacity() && totalPassengerWeight() < availableWeight ){
             return true;
         } else {
             return false;

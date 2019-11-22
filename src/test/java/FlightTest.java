@@ -34,18 +34,19 @@ public class FlightTest {
 
     @Test
     public void cantBookPassengerToFullPlane(){
+        flight.bookPassenger(passenger);    // 1 passenger, 2 bags
+        flight.bookPassenger(passenger);    // 2 passengers, 4 bags
+        flight.bookPassenger(passenger);    // 3 passengers, 6 bags
+        flight.bookPassenger(passenger);    // 4 passengers, 8 bags
+        flight.bookPassenger(passenger);    // 5 passengers, 10 bags => available weight allowance is 10 (20 / 2)
+        flight.bookPassenger(passenger);    // 6 passengers, 12 bags
+        assertEquals(5, flight.passengerCount());
+    }
+
+    @Test
+    public void passengersHaveWeight(){
         flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        flight.bookPassenger(passenger);
-        assertEquals(10, flight.passengerCount());
+        assertEquals(2, flight.totalPassengerWeight());
     }
 
 }
