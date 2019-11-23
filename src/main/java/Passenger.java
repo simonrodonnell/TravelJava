@@ -2,7 +2,7 @@ public class Passenger {
 
     private String name;
     private int numberOfBags;
-    public int bagWeight;
+    private int bagWeight;
 
     public Passenger(String name, int numberOfBags){
         this.name = name;
